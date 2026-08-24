@@ -11,25 +11,36 @@
 </head>
 
 <body>
-    <header id="header" class="d-flex justify-content-between align-items-center p-3 ">
-        <div class="logo d-flex justify-content-center align-items-center md-3">
-            <img src="asset/img/Logo_Brand.png" alt="Logo" height="80">
+    <header id="header" class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#Home">
+                <div class="logo-wrapper d-flex justify-content-center align-items-center me-2">
+                    <img src="asset/img/Logo_Brand.png" alt="Jose Logo" height="40">
+                </div>
+                <span class="brand-text fw-bold">JOSE</span>
+            </a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarMenu">
+                <ul class="navbar-nav gap-2 align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#Home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#About">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn-contact" href="#Contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <ul class="nav nav-underline justify-content-end">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#Home">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#Services">Services</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#About">About</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#Contact">Contact</a>
-            </li>
-        </ul>
-    </header>
+    </header> <!....!>
     <section id="Home" class="hero-section">
         <div class="container">
             <div class="row align-items-center">
@@ -96,7 +107,7 @@
             </div>
         </div>
     </section>
-    <section id="About" class="section-padding">
+    <section id="About" class="about">
         <div class="container">
             <div class="row mb-5">
                 <div class="col text-center">
@@ -108,55 +119,236 @@
                     </p>
                 </div>
             </div>
+            <div class="row g-5 mb-5">
+                <div class="col-lg-5">
+                    <h3 class="fw-bold mb-4">Riwayat Pendidikan</h3>
 
-            <div class="row mb-5">
-                <div class="col text-center">
-                    <h3 class="mb-4">Riwayat Pendidikan</h3>
-                </div>
-            </div>
-
-            <div class="row g-4">
-                <div class="col-12 col-md-4">
-                    <div class="card education-card h-100 border-0 shadow-sm">
-                        <div class="card-body p-4 text-center">
-                            <i class="bi bi-mortarboard-fill display-4 mb-3 d-block"></i>
-                            <h5 class="card-title fw-bold">SD Marsudirini Surakarta</h5>
-                            <p class="card-text text-muted mb-3">2012 - 2018</p>
-                            <a href="https://maps.app.goo.gl/9nTwsCciA4n3XQMp9" target="_blank" class="btn btn-maps">
-                                <i class="bi bi-geo-alt-fill me-2"></i>Lihat di Maps
-                            </a>
+                    <div class="education-timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-marker">
+                                <i class="bi bi-mortarboard-fill"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h5 class="fw-bold mb-1">SD Marsudirini</h5>
+                                <p class="text-muted mb-1">2012 - 2018</p>
+                                <p class="small text-muted">Sekolah Dasar</p>
+                                <a href="https://maps.app.goo.gl/SGBmoJkQ3yC2wpM86" target="_blank"
+                                    class="btn btn-sm btn-maps-link">
+                                    <i class="bi bi-geo-alt me-1"></i>Lihat Lokasi
+                                </a>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker">
+                                <i class="bi bi-mortarboard-fill"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h5 class="fw-bold mb-1">SMP Tarakanita Solo Baru</h5>
+                                <p class="text-muted mb-1">2018 - 2021</p>
+                                <p class="small text-muted">Sekolah Menengah Pertama</p>
+                                <a href="https://maps.app.goo.gl/dxa9LqEFAifebqkq9" target="_blank"
+                                    class="btn btn-sm btn-maps-link">
+                                    <i class="bi bi-geo-alt me-1"></i>Lihat Lokasi
+                                </a>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker">
+                                <i class="bi bi-mortarboard-fill"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h5 class="fw-bold mb-1">SMK Negeri 5 Surakarta</h5>
+                                <p class="text-muted mb-1">2021 - 2024</p>
+                                <p class="small text-muted">Sekolah Menengah Atas</p>
+                                <a href="https://maps.app.goo.gl/aTmwFx6FHZKRFWBn6" target="_blank"
+                                    class="btn btn-sm btn-maps-link">
+                                    <i class="bi bi-geo-alt me-1"></i>Lihat Lokasi
+                                </a>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker active">
+                                <i class="bi bi-mortarboard-fill"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h5 class="fw-bold mb-1">Politeknik ATMI Surakarta</h5>
+                                <p class="text-muted mb-1">2024 - Sekarang</p>
+                                <p class="small text-muted">Teknik Mekatronika - Program D3</p>
+                                <span class="badge bg-dark">Currently Studying</span><br><br>
+                                <a href="https://maps.app.goo.gl/ppgrd3jkNkoDmh9UA" target="_blank"
+                                    class="btn btn-sm btn-maps-link">
+                                    <i class="bi bi-geo-alt me-1"></i>Lihat Lokasi
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-4">
-                    <div class="card education-card h-100 border-0 shadow-sm">
-                        <div class="card-body p-4 text-center">
-                            <i class="bi bi-mortarboard-fill display-4 mb-3 d-block"></i>
-                            <h5 class="card-title fw-bold">SMP Tarakanita Solo Baru</h5>
-                            <p class="card-text text-muted mb-3">2018 - 2021</p>
-                            <a href="https://maps.app.goo.gl/EZoA15oq4H7ttSHc6" target="_blank" class="btn btn-maps">
-                                <i class="bi bi-geo-alt-fill me-2"></i>Lihat di Maps
-                            </a>
+                <div class="col-lg-7">
+                    <h3 class="fw-bold mb-4">Skills & Competencies</h3>
+                    <div class="dashboard-card p-4 mb-3">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="fw-bold mb-0">Technical Skills</h5>
+                            <span class="badge bg-dark">Live Update</span>
+                        </div>
+                        <div class="skill-item mb-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="fw-bold"><i class="bi bi-braces me-2"></i>C / C++</span>
+                                <span class="text-muted">85%</span>
+                            </div>
+                            <div class="progress" style="height: 8px;">
+                                <div class="progress-bar bg-dark" role="progressbar" style="width: 85%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item mb-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="fw-bold"><i class="bi bi-cpu me-2"></i>Python</span>
+                                <span class="text-muted">75%</span>
+                            </div>
+                            <div class="progress" style="height: 8px;">
+                                <div class="progress-bar bg-dark" role="progressbar" style="width: 75%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item mb-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="fw-bold"><i class="bi bi-code-slash me-2"></i>HTML & CSS</span>
+                                <span class="text-muted">90%</span>
+                            </div>
+                            <div class="progress" style="height: 8px;">
+                                <div class="progress-bar bg-dark" role="progressbar" style="width: 90%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item mb-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="fw-bold"><i class="bi bi-diagram-3 me-2"></i>PLC Programming</span>
+                                <span class="text-muted">70%</span>
+                            </div>
+                            <div class="progress" style="height: 8px;">
+                                <div class="progress-bar bg-dark" role="progressbar" style="width: 70%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item mb-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="fw-bold"><i class="bi bi-gear-fill me-2"></i>SolidWorks / CAD</span>
+                                <span class="text-muted">65%</span>
+                            </div>
+                            <div class="progress" style="height: 8px;">
+                                <div class="progress-bar bg-dark" role="progressbar" style="width: 65%"></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-12 col-md-4">
-                    <div class="card education-card h-100 border-0 shadow-sm">
-                        <div class="card-body p-4 text-center">
-                            <i class="bi bi-mortarboard-fill display-4 mb-3 d-block"></i>
-                            <h5 class="card-title fw-bold">SMK Negeri 5 Surakarta</h5>
-                            <p class="card-text text-muted mb-3">2021 - 2024</p>
-                            <a href="https://maps.app.goo.gl/MXBy1bFxKdCUpn648" target="_blank" class="btn btn-maps">
-                                <i class="bi bi-geo-alt-fill me-2"></i>Lihat di Maps
-                            </a>
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <div class="stat-card p-3 text-center">
+                                <i class="bi bi-projector display-6 mb-2 d-block"></i>
+                                <h4 class="fw-bold mb-0">15+</h4>
+                                <p class="text-muted small mb-0">Projects Done</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-card p-3 text-center">
+                                <i class="bi bi-clock-history display-6 mb-2 d-block"></i>
+                                <h4 class="fw-bold mb-0">500+</h4>
+                                <p class="text-muted small mb-0">Hours Coding</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section>Contact</section>
-    <footer>Footer</footer>
+    <section id="Contact" class="section-padding bg-light-custom">
+        <div class="container">
+            <div class="row mb-5 text-center">
+                <div class="col">
+                    <h2 class="display-5 custom-underline mb-3">Contact</h2>
+                    <p class="text-muted mx-auto" style="max-width: 600px;">
+                        Punya pertanyaan, tawaran proyek, atau sekadar ingin menyapa? Jangan ragu untuk menghubungi
+                        saya.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row g-5">
+                <div class="col-lg-5">
+                    <div class="contact-info p-4">
+                        <div class="d-flex align-items-start mb-4">
+                            <i class="bi bi-envelope-fill fs-2 me-3 text-dark"></i>
+                            <div>
+                                <h6 class="fw-bold mb-1">Email</h6>
+                                <p class="text-muted mb-0">gabriel.20242020@student.atmi.ac.id</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start mb-4">
+                            <i class="bi bi-telephone-fill fs-2 me-3 text-dark"></i>
+                            <div>
+                                <h6 class="fw-bold mb-1">Phone / WhatsApp</h6>
+                                <p class="text-muted mb-0">+62 857-2779-6640</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start">
+                            <i class="bi bi-geo-alt-fill fs-2 me-3 text-dark"></i>
+                            <div>
+                                <h6 class="fw-bold mb-1">Location</h6>
+                                <p class="text-muted mb-0">Solobaru, Indonesia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <form action="https://formspree.io/f/ID_FORMSPREE_KAMU" method="POST">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <input type="text" name="name" class="form-control custom-input" placeholder="Nama Anda"
+                                    required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" name="email" class="form-control custom-input"
+                                    placeholder="Email Anda" required>
+                            </div>
+                            <div class="col-12">
+                                <input type="text" name="subject" class="form-control custom-input"
+                                    placeholder="Subjek Pesan">
+                            </div>
+                            <div class="col-12">
+                                <textarea name="message" class="form-control custom-input" rows="5"
+                                    placeholder="Tulis pesan Anda di sini..." required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-custom-submit">
+                                    Kirim Pesan <i class="bi bi-send-fill ms-2"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer-section py-5">
+        <div class="container text-center">
+            <div class="mb-4">
+                <a href="#Home" class="text-decoration-none">
+                    <h3 class="fw-bold text-white mb-0">JOSE<span style="color: #666;">.</span></h3>
+                </a>
+            </div>
+            <div class="social-links mb-4">
+                <a href="https://www.instagram.com/jose.fabbian" class="social-icon" title="Instagram"><i
+                        class="bi bi-instagram"></i></a>
+                <a href="#" class="social-icon" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                <a href="https://github.com/GabrielJosee" class="social-icon" title="GitHub"><i
+                        class="bi bi-github"></i></a>
+                <a href="https://wa.me/6285727796640" class="social-icon" title="WhatsApp"><i
+                        class="bi bi-whatsapp"></i></a>
+            </div>
+            <p class="text-muted-light mb-0 small">
+                &copy; 2026 Jose. Aku belajar bootstrap 5.3.
+            </p>
+        </div>
+    </footer>
     <script src="asset/js/bootstrap.min.js"></script>
 </body>
 
