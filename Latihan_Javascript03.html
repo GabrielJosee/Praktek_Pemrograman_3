@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Javascript 03</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f0f0f0;
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        width: 500px;
+        padding: 30px;
+        border: 1px solid black;
+        border-radius: 40px;
+        background: linear-gradient(135deg, #24505c 0%, #b8c9dd 100%);
+    }
+
+    h1 {
+        text-align: center;
+        color: black;
+        font-size: 28px;
+        margin-bottom: 25px;
+        font-weight: bold;
+    }
+
+    .jam {
+        text-align: center;
+        font-size: 24px;
+        color: black;
+        margin-bottom: 30px;
+        font-family: 'Courier New', monospace;
+    }
+
+    .button {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .btn {
+        padding: 10px 30px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        background: white;
+        color: #333;
+        font-weight: normal;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .btn:hover {
+        background: #f5f5f5;
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 20);
+    }
+
+    .btn:active {
+        transform: translateY(-2px);
+        background: #e0e0e0;
+    }
+</style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Second Stopwatch</h1>
+        <div class="jam" id="jam">00:00</div>
+        <div class="button">
+            <button class="btn" id="btn-start" onclick="startTimer()">Start</button>
+            <button class="btn" id="btn-pause" onclick="pauseTimer()">Pause</button>
+            <button class="btn" id="btn-stop" onclick="stopTimer()">Stop</button>
+        </div>
+    </div>
+    <script>
+        let detik = 0;
+        let interval = null;
+        let mulai = false;
+
+        const jam = document.getElementById('jam');
+        const btnStart = document.getElementById('btn-start');
+        const btnPause = document.getElementById('btn-pause');
+        const btnStop = document.getElementById('btn-stop');
+
+        function formatWaktu(totaldetik) {
+            const menit = Math.floor(totaldetik / 60);   
+            const detiksisa = totaldetik % 60;           
+
+            const menitStr = menit.toString().padStart(2, '0');
+            const detikStr = detiksisa.toString().padStart(2, '0');
+
+            return `${menitStr}:${detikStr}`;
+        }
+
+        function updateDisplay() {
+            jam.textContent = formatWaktu(detik);
+        }
+
+        function startTimer() {
+            if (!mulai) {
+                mulai = true;
+                interval = setInterval(() => { detik++; updateDisplay() }, 1000);
+            }
+        }
+
+        function pauseTimer() {
+            if (mulai) {
+                mulai = false;
+                clearInterval(interval);
+            }
+        }
+
+        function stopTimer() {
+            mulai = false;
+            clearInterval(interval);
+            detik = 0;
+            updateDisplay();
+        }
+
+        updateDisplay();
+    </script>
+</body>
+
+</html>
