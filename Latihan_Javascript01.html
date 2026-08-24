@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan JavaScript 01</title>
+</head>
+<body>
+   <script>
+    let lanjut = true;
+
+    while (lanjut) {
+        let angka = prompt("Masukan Angka Pertama : ");
+        if (angka === null) break;          
+        angka = parseFloat(angka);
+        if (isNaN(angka)) {
+            alert("Angka pertama tidak valid!");
+            continue;                     
+        }
+
+        let angka2 = prompt("Masukan Angka Kedua : ");
+        if (angka2 === null) break;
+        angka2 = parseFloat(angka2);
+        if (isNaN(angka2)) {
+            alert("Angka kedua tidak valid!");
+            continue;
+        }
+
+        let operator = prompt("Pilih operator:\n+ (tambah)\n- (kurang)\n* (kali)\n/ (bagi)");
+        if (operator === null) break;
+
+        let hasil;
+        switch (operator) {
+            case '+': hasil = angka + angka2; break;
+            case '-': hasil = angka - angka2; break;
+            case '*': hasil = angka * angka2; break;
+            case '/':
+                if (angka2 === 0) {
+                    alert("Tidak bisa membagi dengan 0!");
+                    continue;                
+                }
+                hasil = angka / angka2;
+                break;
+            default:
+                alert("Operator tidak valid!");
+                continue;
+        }
+
+        alert(`Hasil : \n${angka} ${operator} ${angka2} = ${hasil}`);
+
+        let pilih = confirm("Mau menghitung lagi?");
+        if (!pilih) {
+            lanjut = false;                
+            alert("Terima kasih, sampai jumpa!");
+        }
+    }
+</script>
+</body>
+</html>
