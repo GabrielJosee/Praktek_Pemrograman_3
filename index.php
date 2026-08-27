@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -139,23 +136,24 @@ session_start();
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
+
     <?php
-    if (isset($_SESSION['tampilkan_modal_sukses'])):
+    if (isset($_GET['status']) && $_GET['status'] == 'sukses'):
         ?>
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 var myModal = new bootstrap.Modal(document.getElementById('modalSukses'));
                 myModal.show();
+                window.history.replaceState({}, document.title, window.location.pathname + window.location.hash);
             });
         </script>
         <?php
-        unset($_SESSION['tampilkan_modal_sukses']);
     endif;
     ?>
+
     <div class="modal fade" id="modalSukses" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0 shadow-lg rounded-4">
@@ -263,7 +261,6 @@ session_start();
         </div>
     </footer>
     <script src="asset/js/bootstrap.bundle.min.js"></script>
-    <script src="asset/js/chart.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const navLinks = document.querySelectorAll('.nav-link');
@@ -310,106 +307,67 @@ session_start();
             });
         });
     </script>
+    <script src="asset/js/chart.js"></script>
     <script>
-        <?php
-        include("koneksi.php");
+        let myChart = null;
 
-        $sql = "SELECT skill, nilai FROM about ORDER BY urutan ASC";
-        $result = $conn->query($sql);
+        function updateGrafik() {
+            fetch('graph.php')
+                .then(res => res.json())
+                .then(data => {
+                    let ctx = document.getElementById('skillsChart').getContext('2d');
+                    let gradient = ctx.createLinearGradient(0, 0, 0, 400);
+                    gradient.addColorStop(0, '#1e293b');
+                    gradient.addColorStop(1, '#94a3b8');
+                    if (!myChart) {
+                        myChart = new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: data.labels,
+                                datasets: [{
+                                    data: data.data,
+                                    backgroundColor: gradient,
+                                    borderRadius: 8,
+                                    barPercentage: 0.5
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                animation: false,
+                                hover: { mode: null },
+                                scales: {
+                                    y: {
+                                        beginAtZero: true, max: 100, ticks: {
+                                            callback: function (value) {
+                                                return value + "%"
+                                            }
+                                        }
 
-        $labels = [];
-        $data = [];
-        $labelsJSON = '[]';
-        $dataJSON = '[]';
-        $jumlahData = 0;
-
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $labels[] = $row['skill'];
-                $data[] = (int) $row['nilai'];
-            }
-            $conn->close();
-
-            $labelsJSON = json_encode($labels);
-            $dataJSON = json_encode($data);
-            $jumlahData = count($data);
-        }
-        ?>
-
-        const ctx = document.getElementById('skillsChart');
-
-        <?php if (!empty($data)): ?>
-            function generateGrayscaleColors(count) {
-                const colors = [];
-                for (let i = 0; i < count; i++) {
-                    const value = Math.floor((255 / count) * i);
-                    colors.push(`rgb(${value}, ${value}, ${value})`);
-                }
-                return colors;
-            }
-
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: <?php echo $labelsJSON; ?>,
-                    datasets: [{
-                        label: 'Tingkat Penguasaan (%)',
-                        data: <?php echo $dataJSON; ?>,
-                        backgroundColor: generateGrayscaleColors(<?php echo $jumlahData; ?>),
-                        borderColor: '#000000',
-                        borderWidth: 1,
-                        borderRadius: 4,
-                        barPercentage: 0.7,
-                        hoverOffset: 10
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    animation: {
-                        duration: 1000,
-                        easing: 'easeOutQuart'
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: 100,
-                            grid: { color: '#f0f0f0' },
-                            ticks: {
-                                callback: function (value) {
-                                    return value + '%';
+                                    }, x: { grid: { display: false } }
+                                },
+                                plugins: {
+                                    legend: { display: false },
+                                    tooltip: {
+                                        callbacks: {
+                                            label: function (context) {
+                                                return context.parsed.y + '%';
+                                            }
+                                        }
+                                    }
                                 }
                             }
-                        },
-                        x: {
-                            grid: { display: false }
-                        }
-                    },
-                    plugins: {
-                        legend: { display: false },
-                        tooltip: {
-                            backgroundColor: '#000',
-                            callbacks: {
-                                label: function (context) {
-                                    return 'Penguasaan: ' + context.parsed.y + '%';
-                                }
-                            }
-                        }
+                        });
                     }
-                }
-            });
-        <?php else: ?>
-            const canvas = ctx;
-            const container = canvas.parentElement;
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            container.innerHTML = `
-            <div class="d-flex flex-column align-items-center justify-content-center" style="height: 350px; color: #999;">
-                <i class="bi bi-database display-1 mb-3"></i>
-                <p class="mb-0 fw-bold">Belum ada data skill</p>
-                <small class="text-muted">Silakan tambahkan data ke database</small>
-            </div>
-        `;
-        <?php endif; ?>
+                    else {
+                        myChart.data.labels = data.labels;
+                        myChart.data.datasets[0].data = data.data;
+                        myChart.update('none');
+                    }
+                });
+        }
+        updateGrafik();
+        setInterval(updateGrafik, 1000); 
     </script>
 </body>
 

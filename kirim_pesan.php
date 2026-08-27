@@ -1,22 +1,22 @@
 <?php
-session_start();
 
 include("koneksi.php");
 
 if (isset($_POST["kirim"])) {
-    $nama = mysqli_real_escape_string($conn, trim($_POST['nama']));
-    $email = mysqli_real_escape_string($conn, trim($_POST['email']));
+    $nama   = mysqli_real_escape_string($conn, trim($_POST['nama']));
+    $email  = mysqli_real_escape_string($conn, trim($_POST['email']));
     $subjek = mysqli_real_escape_string($conn, trim($_POST['subjek']));
-    $pesan = mysqli_real_escape_string($conn, trim($_POST['pesan']));
+    $pesan  = mysqli_real_escape_string($conn, trim($_POST['pesan']));
 
     $sql = "INSERT INTO kontak (nama, email, subjek, pesan)
             VALUES ('$nama', '$email', '$subjek', '$pesan')";
+            
     if ($conn->query($sql) === TRUE) {
-        $_SESSION['tampilkan_modal_sukses'] = true;
-        header("Location: index.php#Contact");
+        header("Location: index.php?status=sukses#Contact");
         exit();
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        header("Location: index.php?status=gagal#Contact");
+        exit();
     }
 }
 
