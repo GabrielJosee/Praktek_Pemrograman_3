@@ -319,6 +319,9 @@ session_start();
 
         $labels = [];
         $data = [];
+        $labelsJSON = '[]';
+        $dataJSON = '[]';
+        $jumlahData = 0;
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {

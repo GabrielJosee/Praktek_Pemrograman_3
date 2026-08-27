@@ -13,7 +13,7 @@ if (isset($_POST["kirim"])) {
             VALUES ('$nama', '$email', '$subjek', '$pesan')";
     if ($conn->query($sql) === TRUE) {
         $_SESSION['tampilkan_modal_sukses'] = true;
-        header("Location: Latihan_Bootstrap.php#Contact");
+        header("Location: index.php#Contact");
         exit();
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
