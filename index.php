@@ -222,7 +222,7 @@
                             </div>
                             <div class="col-12">
                                 <input type="text" name="subjek" class="form-control custom-input"
-                                    placeholder="Subjek Pesan">
+                                    placeholder="Subjek Pesan" required>
                             </div>
                             <div class="col-12">
                                 <textarea name="pesan" class="form-control custom-input" rows="5"
@@ -370,5 +370,4 @@
         setInterval(updateGrafik, 1000); 
     </script>
 </body>
-
 </html>
